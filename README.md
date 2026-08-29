@@ -50,13 +50,12 @@ drawings, choices, explanations and help cards. Press "New examples" to reroll.
 
 ## Custom domain
 
-`science.mehdee.com` is the intended home. It needs one DNS record in
-Cloudflare on the `mehdee.com` zone:
+Lives at https://science.mehdee.com/ . The DNS record on the `mehdee.com`
+Cloudflare zone is:
 
 ```
 Type: CNAME   Name: science   Target: rmehdee.github.io   Proxy: DNS only
 ```
 
-Once that resolves, rename `CNAME.pending` back to `CNAME`, push, and set the
-custom domain in the repo's Pages settings. Until then the game serves from
-https://rmehdee.github.io/science-lab/ .
+Proxy must stay DNS only. If Cloudflare proxies the record, GitHub cannot
+complete the certificate challenge and the subdomain serves no HTTPS.
