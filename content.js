@@ -215,6 +215,7 @@ const G1 = [
   { id: 's1-parents', t: 'Young ones look like parents', b: 'SC.1.L.16.1', gen: () => fromPool([
     { q: 'A puppy grows up to look most like which animal?', a: 'A dog', w: ['A cat', 'A bird', 'A fish'], why: 'Young animals closely resemble their parents.' },
     { q: 'Do all kittens in one litter look exactly the same?', a: 'No, there are small differences', w: ['Yes, identical', 'They look like puppies', 'They have no fur'], why: 'Young ones look like their parents, but there are still small variations between them.' },
+    { q: 'Seeds from one sunflower are planted. How will the new plants look?', a: 'Like sunflowers, but not identical to each other', w: ['Exactly identical to each other', 'Like roses', 'Like grass'], why: 'Plants resemble their parents too, and small variations still exist between individuals.' },
     { q: 'An acorn falls from an oak tree. What will grow from it?', a: 'An oak tree', w: ['A pine tree', 'A rose bush', 'A palm tree'], why: 'Offspring closely resemble their parents, so an acorn grows into an oak.' },
   ]) },
   { id: 's1-needs', t: 'What living things need', b: 'SC.1.L.17.1', gen: () => fromPool([
@@ -312,8 +313,8 @@ const G2 = [
     { q: 'Which animal is best suited to living in the ocean?', a: 'A dolphin', w: ['A squirrel', 'A camel', 'An earthworm'], why: 'A dolphin has the body and abilities to get everything it needs in ocean water.' },
   ]) },
   { id: 's2-invest', t: 'Investigating in teams', b: 'SC.2.N.1.1', gen: () => fromPool([
-    { q: 'What makes a question a good science question?', a: 'You can test it', w: ['It is very long', 'Nobody knows it', 'It sounds clever'], why: 'Science questions are ones you can investigate and gather evidence about.' },
-    { q: 'Which is a testable question?', a: 'Do seeds sprout faster in warm soil?', w: ['Which flower is prettiest?', 'Is summer the best season?', 'What is the nicest colour?'], why: 'A testable question can be answered by observing or measuring, not by opinion.' },
+    { q: 'Two groups in your class investigate the same thing and get different answers. What is the best next step?', a: 'Compare how each group did it', w: ['Pick the group with more people', 'Take the higher number', 'Start a completely new topic'], why: 'Groups investigate together and compare, so a difference is something to explain, not to ignore.' },
+    { q: 'Your team wants to find out which paper towel soaks up the most water. What should you do first?', a: 'Agree on how you will measure it', w: ['Vote on a favourite brand', 'Pick the prettiest packet', 'Guess and write it down'], why: 'Teams investigate together, and they agree how to measure before they start so everyone works the same way.' },
   ]) },
   { id: 's2-compare', t: 'Comparing observations', b: 'SC.2.N.1.2', gen: () => fromPool([
     { q: 'Two teams measure the same plant with the same ruler and get different answers. What should they do?', a: 'Measure again carefully', w: ['Pick the bigger number', 'Pick the smaller number', 'Stop the experiment'], why: 'When results disagree, scientists check their work and measure again.' },
@@ -327,6 +328,7 @@ const G2 = [
     { q: 'Which of these is an observation?', a: 'The ground is wet', w: ['It rained last night', 'Someone spilled water', 'A storm is coming'], why: 'An observation is what you sense directly. Saying why the ground is wet is an inference.' },
     { q: 'Which of these is an inference?', a: 'The plant died from lack of water', w: ['The plant is brown', 'The soil is dry', 'The leaves are drooping'], why: 'An inference is an explanation you work out. The brown leaves and dry soil are what you observed.' },
     { q: 'You see paw prints in the mud. Saying "a dog walked here" is what?', a: 'An inference', w: ['An observation', 'A measurement', 'A guess with no evidence'], why: 'The prints are the observation. Concluding what made them is an inference.' },
+    { q: 'An empirical observation is something you sense. Which list is right?', a: 'See, hear, feel, smell or taste', w: ['Think, guess, hope or wish', 'Read, write, draw or sing', 'Remember, imagine or dream'], why: 'Empirical means gathered by the senses. What you think about it afterwards is an inference, not an observation.' },
   ]) },
   { id: 's2-scientists', t: 'How scientists work', b: 'SC.2.N.1.6', gen: () => fromPool([
     { q: 'Do scientists usually work alone or with others?', a: 'Both, often in teams', w: ['Always completely alone', 'Never with anyone', 'Only with machines'], why: 'Scientists work alone and in groups, and they share findings so others can check them.' },
@@ -356,6 +358,8 @@ const G2 = [
   { id: 's2-properties', t: 'Measuring properties', b: 'SC.2.P.8.1', gen: () => fromPool([
     { q: 'Which tool measures how heavy an object is?', a: 'A balance or scale', w: ['A ruler', 'A thermometer', 'A clock'], why: 'A balance or scale measures weight. A ruler measures length.' },
     { q: 'Which property describes how a surface feels?', a: 'Texture', w: ['Colour', 'Weight', 'Temperature'], why: 'Texture is whether something is rough, smooth, bumpy or slippery.' },
+    { q: 'You drop a cork and a stone into water. What property are you testing?', a: 'Whether they sink or float', w: ['Their colour', 'Their temperature', 'Their smell'], why: 'Sinking or floating in water is one of the properties you can observe about an object.' },
+    { q: 'You hold a magnet near a paperclip and a plastic button. What property are you testing?', a: 'Whether a magnet attracts them', w: ['Their weight', 'Their texture', 'Their shape'], why: 'Attraction to a magnet is a property you can observe and use to sort objects.' },
   ]) },
   { id: 's2-states', t: 'Solid, liquid and gas', b: 'SC.2.P.8.2', gen: () => fromPool([
     { q: 'Which state of matter is a rock?', a: 'Solid', w: ['Liquid', 'Gas', 'None of these'], why: 'A rock keeps its own shape, so it is a solid.', vis: () => svgStates('solid') },
@@ -371,10 +375,24 @@ const G2 = [
     { q: 'What happens to ice when it warms up?', a: 'It melts into liquid water', w: ['It turns to rock', 'It disappears forever', 'It gets colder'], why: 'Adding heat makes ice melt into liquid water.' },
     { q: 'Water vapour in the air is which state of matter?', a: 'Gas', w: ['Solid', 'Liquid', 'None of these'], why: 'Water vapour is the gas state of water.' },
   ]) },
-  { id: 's2-temp', t: 'Measuring temperature', b: 'SC.2.P.8.5', gen() {
+  { id: 's2-temp', t: 'Comparing temperatures day by day', b: 'SC.2.P.8.5', gen() {
       const t = R(1, 4) * 20;
-      return { q: 'What temperature does this thermometer show?', a: t + '°', choices: shuffle([t + '°', (t + 20) + '°', Math.max(0, t - 20) + '°', (t + 10) + '°']).slice(0, 4),
+      const mode = pick(['read', 'compare', 'sametime']);
+      if (mode === 'read') return { q: 'What temperature does this thermometer show?', a: t + '°',
+        choices: shuffle([t + '°', (t + 20) + '°', Math.max(0, t - 20) + '°', (t + 10) + '°']).slice(0, 4),
         why: `The red line stops at the ${t} degree mark.`, visual: svgThermo(t, 0, 100) };
+      if (mode === 'compare') {
+        const mon = R(3, 8) * 10, tue = mon + pick([-20, -10, 10, 20]);
+        return { q: `Monday was ${mon}° and Tuesday was ${tue}°. What changed?`,
+          a: tue > mon ? `It got ${tue - mon}° warmer` : `It got ${mon - tue}° cooler`,
+          choices: shuffle([tue > mon ? `It got ${tue - mon}° warmer` : `It got ${mon - tue}° cooler`,
+            tue > mon ? `It got ${tue - mon}° cooler` : `It got ${mon - tue}° warmer`,
+            'Nothing changed', `It got ${Math.abs(tue - mon) + 10}° warmer`]),
+          why: `${Math.max(mon, tue)} − ${Math.min(mon, tue)} = ${Math.abs(tue - mon)} degrees ${tue > mon ? 'warmer' : 'cooler'} than the day before.` };
+      }
+      return { q: 'Why should you take the temperature at the same time every day?', a: 'So the days can be compared fairly',
+        choices: shuffle(['So the days can be compared fairly', 'So the thermometer does not break', 'So it is always warm', 'So you do not forget']),
+        why: 'Air is warmer at noon than at dawn. Measuring at the same time each day means any difference you see is a real change in the weather.' };
     } },
   { id: 's2-volume', t: 'Comparing volume', b: 'SC.2.P.8.6', gen: () => fromPool([
     { q: 'You pour the same water into a tall thin glass and a short wide glass. Is the amount the same?', a: 'Yes, the amount is the same', w: ['No, the tall one has more', 'No, the wide one has more', 'The water changed'], why: 'The shape of the container changes how it looks, but the amount of water stays the same.' },
@@ -393,9 +411,10 @@ const G3 = [
     { q: 'Two stars look equally bright from Earth. What could be true?', a: 'One is bigger but farther away', w: ['They must be identical', 'They must be the same distance', 'Neither gives off light'], why: 'Brightness as seen from Earth depends on both the star’s size and its distance.' },
     { q: 'Are all stars the same size?', a: 'No, they vary a great deal', w: ['Yes, all identical', 'All are smaller than the Sun', 'All are the same as Earth'], why: 'Stars come in many sizes and brightnesses.' },
   ]) },
-  { id: 's3-sunstar', t: 'The Sun is a star', b: 'SC.3.E.5.2', gen: () => fromPool([
-    { q: 'What is the Sun?', a: 'A star', w: ['A planet', 'A moon', 'A comet'], why: 'The Sun is a star that gives off energy, much of it as light.' },
-    { q: 'What does the Sun give off?', a: 'Energy, including light and heat', w: ['Only sound', 'Only water', 'Only air'], why: 'The Sun emits energy. We receive some of it as light and some as heat.' },
+  { id: 's3-sunstar', t: 'The Sun is a star that emits energy', b: 'SC.3.E.5.2', gen: () => fromPool([
+    { q: 'What makes the Sun a star rather than a planet?', a: 'It gives off its own energy', w: ['It is very round', 'It is very large', 'It moves across the sky'], why: 'Stars emit their own energy. Planets do not; they only reflect light from a star.' },
+    { q: 'How is the Sun different from the Moon?', a: 'The Sun makes its own light; the Moon reflects it', w: ['The Moon is hotter', 'The Moon is a star too', 'The Sun reflects light from the Moon'], why: 'The Sun emits light. The Moon only shines because sunlight bounces off it.' },
+    { q: 'Sunlight reaches Earth across empty space. What is actually travelling to us?', a: 'Energy from the Sun', w: ['Air pushed from the Sun', 'Pieces of the Sun', 'Sound waves'], why: 'The Sun emits energy, some of it as light, and that energy crosses space to reach us.' },
   ]) },
   { id: 's3-closest', t: 'Why the Sun looks so big', b: 'SC.3.E.5.3', gen: () => fromPool([
     { q: 'Why does the Sun look bigger and brighter than other stars?', a: 'It is the closest star to Earth', w: ['It is the biggest star', 'It is the hottest star', 'It is the only star'], why: 'Many stars are larger than the Sun, but the Sun is by far the nearest, so it looks large and bright.' },
@@ -415,11 +434,12 @@ const G3 = [
     { q: 'What happens to that slide after the Sun goes down?', a: 'It slowly loses heat and cools', w: ['It gets hotter', 'It stays hot all night', 'It turns to liquid'], why: 'With no Sun to add energy, the object loses heat to its surroundings.' },
     { q: 'Which surface heats up fastest in sunlight?', a: 'A dark one', w: ['A white one', 'A shiny mirror', 'A clear one'], why: 'Dark surfaces absorb more radiant energy, so they warm faster.' },
   ]) },
-  { id: 's3-plantstruct', t: 'Plant structures and their jobs', b: 'SC.3.L.14.1', gen: () => fromPool([
-    { q: 'Which plant structure makes food using sunlight?', a: 'Leaves', w: ['Roots', 'Stem', 'Flower'], why: 'Leaves capture sunlight and use it to produce food for the plant.', vis: () => svgPlant(true) },
-    { q: 'Which structure carries water from the roots up to the leaves?', a: 'Stem', w: ['Flower', 'Seed', 'Petal'], why: 'The stem supports the plant and transports water and nutrients through it.', vis: () => svgPlant(true) },
-    { q: 'Which structure anchors the plant and absorbs water?', a: 'Roots', w: ['Leaves', 'Flower', 'Stem'], why: 'Roots hold the plant in place and take in water and nutrients from the soil.', vis: () => svgPlant(true) },
-    { q: 'Which structure is responsible for reproduction?', a: 'Flower', w: ['Root', 'Stem', 'Leaf'], why: 'Flowers produce seeds, which grow into new plants.', vis: () => svgPlant(true) },
+  { id: 's3-plantstruct', t: 'What plant structures do', b: 'SC.3.L.14.1', gen: () => fromPool([
+    { q: 'Every leaf is stripped from a plant. Which job can it no longer do?', a: 'Make its own food', w: ['Take in water', 'Stand upright', 'Grow roots'], why: 'Leaves are where food production happens, so losing them stops the plant feeding itself.', vis: () => svgPlant(true) },
+    { q: 'Water moves from the soil to the leaves. Which route does it take?', a: 'Roots, then stem, then leaves', w: ['Leaves, then stem, then roots', 'Flower, then roots', 'Stem, then roots, then flower'], why: 'Roots absorb the water, the stem transports it upward, and it arrives at the leaves.', vis: () => svgPlant(true) },
+    { q: 'A plant’s stem is crushed. Why do its leaves wilt soon after?', a: 'Water can no longer reach them', w: ['The leaves lost their colour', 'The roots stopped growing', 'The flower closed'], why: 'The stem is the transport route. Block it and water cannot get from the roots to the leaves.', vis: () => svgPlant(true) },
+    { q: 'Which job does a flower do that a leaf cannot?', a: 'Make seeds for new plants', w: ['Make food from sunlight', 'Take in water', 'Hold the plant up'], why: 'Reproduction is the flower’s role. Food production is the leaf’s.', vis: () => svgPlant(true) },
+    { q: 'Plants growing in deep shade often have unusually wide leaves. Why would that help?', a: 'More surface to catch scarce light', w: ['To hold more water', 'To anchor the plant', 'To attract more insects'], why: 'Leaves make food from light, so a bigger leaf catches more of it where light is short.', vis: () => svgPlant(true) },
   ]) },
   { id: 's3-stimuli', t: 'How plants respond', b: 'SC.3.L.14.2', gen: () => fromPool([
     { q: 'A plant on a windowsill leans toward the glass. Why?', a: 'Stems grow toward light', w: ['It is falling over', 'The glass pulls it', 'It wants to be cold'], why: 'Plants respond to light by growing toward it, which helps the leaves catch more sunlight.' },
@@ -456,9 +476,11 @@ const G3 = [
     { q: 'Two teams use the same thermometer and get different readings. What is the best next step?', a: 'Look for a reason for the difference', w: ['Pick the number you like', 'Average them and stop', 'Ignore both'], why: 'Scientists compare results across groups and seek reasons to explain any differences.' },
     { q: 'Which could explain why two groups got different measurements?', a: 'They read the tool differently', w: ['Science is random', 'Tools never work', 'Measuring is impossible'], why: 'Differences usually come from how the measurement was taken, so it is worth checking.' },
   ]) },
-  { id: 's3-records3', t: 'Recording your work', b: 'SC.3.N.1.3', gen: () => fromPool([
-    { q: 'Which is the best way to record daily plant heights?', a: 'A chart or simple graph', w: ['Remember them', 'Tell a friend', 'Write one number at the end'], why: 'Charts, graphs, drawings and written notes keep a record you can check later.' },
-    { q: 'Why should you record data as you go, not at the end?', a: 'So nothing is forgotten or changed', w: ['It looks tidier', 'It takes less time', 'It is a rule with no reason'], why: 'Recording as you observe keeps the data accurate.' },
+  { id: 's3-records3', t: 'Charts and graphs', b: 'SC.3.N.1.3', gen: () => fromPool([
+    { q: 'You measure one plant’s height every day for two weeks. Which record shows the change over time best?', a: 'A line graph', w: ['A single photograph', 'A list of colours', 'A drawing of the pot'], why: 'A line graph shows how one measurement rises or falls across time.' },
+    { q: 'You count how many children chose each of four lunches. Which record compares them best?', a: 'A bar graph', w: ['A line graph over time', 'A written paragraph', 'A single tally mark'], why: 'Bar graphs compare separate categories side by side.' },
+    { q: 'Your notebook says only "the plant looked bigger". Why is that a weak record?', a: 'There is no measurement to compare', w: ['It is too short to read', 'Plants cannot be measured', 'It should have been spoken'], why: 'A record needs numbers or details someone else could check, not an impression.' },
+    { q: 'Two students record the same experiment. Whose record is more useful?', sub: 'A: "day 3, 12 cm, two new leaves"   B: "day 3, growing nicely"', a: 'A', w: ['B', 'They are equally useful', 'Neither is useful'], why: 'A gives measurements that can be compared and checked. B gives an opinion.' },
   ]) },
   { id: 's3-communicate', t: 'Scientists communicate', b: 'SC.3.N.1.4', gen: () => fromPool([
     { q: 'Why do scientists share their findings with other scientists?', a: 'So others can check and build on them', w: ['To show off', 'To keep them secret', 'Because it is required by law'], why: 'Communication lets others verify results and continue the work.' },
@@ -524,7 +546,7 @@ const G3 = [
     } },
   { id: 's3-massvol', t: 'Mass and volume', b: 'SC.3.P.8.2', gen: () => fromPool([
     { q: 'Which tool measures the mass of a solid?', a: 'A balance', w: ['A ruler', 'A thermometer', 'A stopwatch'], why: 'A balance compares mass. A ruler measures length and a thermometer measures temperature.' },
-    { q: 'Which tool measures the volume of a liquid?', a: 'A graduated cylinder', w: ['A balance', 'A thermometer', 'A magnifier'], why: 'A graduated cylinder is marked in units of volume, usually millilitres.' },
+    { q: 'Two blocks are exactly the same size, but one feels much heavier. What is different about them?', a: 'Their mass', w: ['Their volume', 'Their shape', 'Their temperature'], why: 'Same size means same volume. The heavier block simply has more mass packed into it.' },
     { q: 'What does volume tell you?', a: 'How much space something takes up', w: ['How heavy it is', 'How hot it is', 'What colour it is'], why: 'Volume is the amount of space an object or liquid occupies.' },
   ]) },
   { id: 's3-materials', t: 'Comparing materials', b: 'SC.3.P.8.3', gen: () => fromPool([
@@ -578,6 +600,8 @@ const G4 = [
     { q: 'What does "luster" describe?', a: 'How light reflects off it', w: ['How hard it is', 'Its weight', 'Its smell'], why: 'Luster describes whether a mineral looks metallic, glassy, dull or pearly.' },
     { q: 'A mineral scratches glass but a knife cannot scratch it. What property is being tested?', a: 'Hardness', w: ['Streak', 'Luster', 'Cleavage'], why: 'Hardness is tested by seeing what will scratch what.' },
     { q: 'What is cleavage in a mineral?', a: 'How it breaks along flat surfaces', w: ['Its colour', 'Its weight', 'How it smells'], why: 'Cleavage is the tendency to split along smooth, flat planes.' },
+    { q: 'What is a rock actually made of?', a: 'One or more minerals', w: ['Only soil', 'Only water', 'Only fossils'], why: 'Minerals are the building blocks. A rock is a mixture of one or more of them.' },
+    { q: 'Quartz, feldspar and mica are examples of what?', a: 'Minerals that form rocks', w: ['Types of soil', 'Kinds of fossil', 'Forms of energy'], why: 'These are common earth-forming minerals, and granite is made of all three.' },
   ]) },
   { id: 's4-resources', t: 'Renewable and nonrenewable', b: 'SC.4.E.6.3', gen: () => fromPool([
     { q: 'Which resource is renewable?', a: 'Sunlight', w: ['Coal', 'Oil', 'Natural gas'], why: 'Renewable resources are replaced naturally within a human lifetime. Sunlight and wind are renewable.' },
@@ -614,7 +638,7 @@ const G4 = [
   { id: 's4-behavior', t: 'Inherited and learned behaviour', b: 'SC.4.L.16.3', gen: () => fromPool([
     { q: 'A spider spins a web without being taught. What kind of behaviour is that?', a: 'Inherited', w: ['Learned', 'Taught by parents', 'Random'], why: 'Instinctive behaviours are inherited and appear without any training.' },
     { q: 'A dog sits when told to sit. What kind of behaviour is that?', a: 'Learned', w: ['Inherited', 'Instinct', 'Automatic'], why: 'The dog learned this behaviour through training and practice.' },
-    { q: 'Birds migrating south each autumn is mostly what?', a: 'Inherited behaviour', w: ['Learned at school', 'Copied from humans', 'Completely random'], why: 'Migration is largely instinctive, though experience can refine the route.' },
+    { q: 'A newly hatched sea turtle heads straight for the ocean with no parent present. What kind of behaviour is that?', a: 'Inherited', w: ['Learned', 'Taught by other turtles', 'Copied from birds'], why: 'It has had no chance to learn or be taught, so the behaviour must be inherited.' },
   ]) },
   { id: 's4-metamorphosis', t: 'Complete and incomplete metamorphosis', b: 'SC.4.L.16.4', gen: () => fromPool([
     { q: 'A butterfly goes egg, larva, pupa, adult. What is that called?', a: 'Complete metamorphosis', w: ['Incomplete metamorphosis', 'No metamorphosis', 'Germination'], why: 'Complete metamorphosis has four very different stages, including a pupa.',
@@ -622,6 +646,8 @@ const G4 = [
     { q: 'A grasshopper goes egg, nymph, adult, with the nymph looking like a small adult. What is that?', a: 'Incomplete metamorphosis', w: ['Complete metamorphosis', 'Pollination', 'Hibernation'], why: 'Incomplete metamorphosis has three stages and no pupa, and the young resemble the adult.',
       vis: () => svgCycle([{ icon: '🥚', name: 'egg' }, { icon: '🦗', name: 'nymph' }, { icon: '🦗', name: 'adult' }]) },
     { q: 'Which stage does complete metamorphosis have that incomplete does not?', a: 'Pupa', w: ['Egg', 'Adult', 'Nymph'], why: 'The pupa stage, where the body is completely rebuilt, only occurs in complete metamorphosis.' },
+    { q: 'A Florida lubber grasshopper hatches looking like a small wingless adult. Which life cycle is that?', a: 'Incomplete metamorphosis', w: ['Complete metamorphosis', 'Germination', 'Pollination'], why: 'Florida lubbers go egg, nymph, adult. The young already resemble the adult, so there is no pupa stage.' },
+    { q: 'A Florida orange tree makes flowers, then fruit with seeds inside. A pine makes seeds in cones with no flowers. What separates them?', a: 'Whether they flower', w: ['Whether they have seeds', 'Whether they have roots', 'Whether they need sunlight'], why: 'Both are seed-bearing plants. The orange is flowering; the pine is a nonflowering seed plant.' },
   ]) },
   { id: 's4-flseasons', t: 'Florida seasons compared', b: 'SC.4.L.17.1', gen: () => fromPool([
     { q: 'How do Florida winters compare with winters in the northern United States?', a: 'Milder, with far less snow', w: ['Colder and snowier', 'Exactly the same', 'Hotter than summer'], why: 'Florida’s southern position keeps winters mild, so plants and animals respond differently than they do further north.' },
@@ -678,10 +704,10 @@ const G4 = [
   ]) },
   { id: 's4-natural', t: 'What science studies', b: 'SC.4.N.2.1', gen: () => fromPool([
     { q: 'What does science study?', a: 'The natural world', w: ['Everything imaginable', 'Only opinions', 'Only history'], why: 'Science focuses solely on the natural world, using observation and evidence.' },
-    { q: 'Which question can science investigate?', a: 'How fast does ice melt in salt water?', w: ['Which song is most beautiful?', 'What is the best flavour?', 'Which colour is nicest?'], why: 'Science answers questions that can be tested with observation and measurement.' },
+    { q: 'Why can science not answer "which painting is the most beautiful?"', a: 'Beauty is not part of the natural world you can measure', w: ['Nobody has tried yet', 'Paintings are too small', 'Only art teachers may answer it'], why: 'Science focuses solely on the natural world. Questions of taste and value sit outside it.' },
   ]) },
   { id: 's4-modeltypes', t: 'Kinds of models', b: 'SC.4.N.3.1', gen: () => fromPool([
-    { q: 'Which of these counts as a scientific model?', a: 'All of these: a diagram, a 3D build, a computer simulation', w: ['Only a 3D build', 'Only a computer program', 'Only a drawing'], why: 'Models can be three dimensional, two dimensional, a computer model, or even an explanation held in your mind.' },
+    { q: 'A scientist pictures how a molecule fits together in her head, without drawing it. Is that a model?', a: 'Yes, a mental model', w: ['No, models must be physical', 'No, models must be drawn', 'Only if she writes it down'], why: 'Models can be three dimensional, two dimensional, a computer model, or an explanation held in your mind.' },
     { q: 'A globe representing Earth is which kind of model?', a: 'Three dimensional', w: ['Two dimensional', 'A computer model', 'A mental model'], why: 'A globe is a physical, three-dimensional model.' },
     { q: 'A labelled drawing of the water cycle is which kind of model?', a: 'Two dimensional', w: ['Three dimensional', 'A computer model', 'A physical build'], why: 'A flat diagram is a two-dimensional model.' },
   ]) },
@@ -768,7 +794,7 @@ const G5 = [
   { id: 's5-solarsystem', t: 'Objects in the Solar System', b: 'SC.5.E.5.3', gen: () => fromPool([
     { q: 'What is Earth’s position from the Sun?', a: 'Third', w: ['First', 'Second', 'Fourth'], why: 'The order is Mercury, Venus, Earth, Mars, so Earth is third from the Sun.' },
     { q: 'What is an asteroid?', a: 'A rocky object orbiting the Sun', w: ['A star', 'A moon of Earth', 'A ball of gas'], why: 'Asteroids are rocky bodies, most of them in a belt between Mars and Jupiter.' },
-    { q: 'What is a comet mostly made of?', a: 'Ice and dust', w: ['Solid iron', 'Hot gas like a star', 'Liquid water only'], why: 'Comets are icy bodies that grow a glowing tail when they near the Sun.' },
+    { q: 'Why does a comet grow a bright tail as it approaches the Sun?', a: 'Its ice heats up and streams away', w: ['It catches fire', 'It collides with planets', 'It starts spinning faster'], why: 'A comet is ice and dust. Near the Sun the ice turns to gas and trails behind it as a tail.' },
     { q: 'What is a moon?', a: 'An object that orbits a planet', w: ['An object that orbits the Sun directly', 'A small star', 'A type of comet'], why: 'Moons orbit planets, while planets orbit the Sun.' },
   ]) },
   { id: 's5-watercycle', t: 'The water cycle', b: 'SC.5.E.7.1', gen: () => fromPool([
@@ -808,7 +834,7 @@ const G5 = [
     { q: 'What belongs in an emergency supply kit?', a: 'Water, food, a torch and a radio', w: ['Only snacks', 'Only toys', 'Only money'], why: 'A kit should cover basic needs and communication for several days.' },
   ]) },
   { id: 's5-organs', t: 'Human organs', b: 'SC.5.L.14.1', gen: () => fromPool([
-    { q: 'Which organ pumps blood through the body?', a: 'Heart', w: ['Lungs', 'Liver', 'Stomach'], why: 'The heart pumps blood, carrying oxygen and nutrients everywhere.' },
+    { q: 'Which two organs work together so that oxygen reaches every part of the body?', a: 'The lungs and the heart', w: ['The stomach and the liver', 'The brain and the skin', 'The kidneys and the lungs'], why: 'The lungs take oxygen into the blood and the heart pumps that blood around the body.' },
     { q: 'Which organ exchanges oxygen and carbon dioxide?', a: 'Lungs', w: ['Heart', 'Kidneys', 'Pancreas'], why: 'Lungs take in oxygen and release carbon dioxide.' },
     { q: 'Which organ is the largest organ of the human body?', a: 'Skin', w: ['Brain', 'Liver', 'Heart'], why: 'Skin covers the whole body, protects it and helps control temperature.' },
     { q: 'Which organ filters waste from the blood?', a: 'Kidneys', w: ['Lungs', 'Brain', 'Stomach'], why: 'The kidneys remove waste and extra water, making urine.' },
@@ -918,6 +944,7 @@ const G5 = [
     { q: 'Which of these dissolves in water?', a: 'Salt', w: ['Sand', 'Pepper', 'Small pebbles'], why: 'Salt and sugar dissolve in water. Sand and pepper do not.' },
     { q: 'What speeds up how quickly sugar dissolves in water?', a: 'Stirring and warmer water', w: ['Colder water', 'Larger crystals', 'Leaving it still'], why: 'Heat, stirring and smaller pieces all make a substance dissolve faster.' },
     { q: 'You stir sand into water and it settles at the bottom. Did it dissolve?', a: 'No', w: ['Yes', 'Only partly', 'It became a gas'], why: 'A dissolved substance spreads through the liquid and does not settle out.' },
+    { q: 'Which change would make sugar dissolve MORE SLOWLY?', a: 'Using ice-cold water', w: ['Stirring harder', 'Heating the water', 'Crushing the sugar first'], why: 'Cold water, still water and larger lumps all slow dissolving down. Heat, stirring and smaller pieces speed it up.' },
   ]) },
   { id: 's5-separate', t: 'Separating mixtures', b: 'SC.5.P.8.3', gen: () => fromPool([
     { q: 'How could you separate iron filings from sand?', a: 'Use a magnet', w: ['Add water', 'Heat the mixture', 'Wait for it to settle'], why: 'Mixtures of solids can be separated using observable properties, and iron is magnetic.' },
