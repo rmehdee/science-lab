@@ -23,6 +23,29 @@ function svgWrap(inner, w, h, maxW) {
 const PHONE_W = 258;
 function sf(vbw, px) { return Math.max(px, Math.round(px * vbw / PHONE_W)); }
 
+
+/* Public-domain photographs, self-hosted. They are never hotlinked: loading
+   them from NASA or Wikimedia would leak a child's IP address to another
+   domain, and these games promise no third-party requests. Credit is shown
+   under every photo. */
+const PHOTO = {
+  earth:       ['Earth from space', 'NASA/JPL-Caltech'],
+  moon:        ['The nearly full Moon, from Apollo 8', 'NASA'],
+  craters:     ['Craters on the Moon, from Apollo 8', 'NASA'],
+  sun:         ['The Sun, by the Solar Dynamics Observatory', 'NASA/SDO'],
+  galaxy:      ['A spiral galaxy seen by Hubble', 'NASA/ESA Hubble'],
+  saturn:      ['Saturn and its rings, by Cassini', 'NASA/JPL-Caltech'],
+  hurricane:   ['A hurricane from the International Space Station', 'NASA'],
+  butterfly:   ['A monarch butterfly', 'U.S. Fish and Wildlife Service'],
+  caterpillar: ['A swallowtail caterpillar', 'U.S. Fish and Wildlife Service'],
+};
+function photo(key) {
+  const p = PHOTO[key];
+  if (!p) return '';
+  return `<figure class="shot"><img src="photos/${key}.webp" alt="${p[0]}" loading="lazy" width="720" height="540">`
+       + `<figcaption>${p[0]} · ${p[1]} · public domain</figcaption></figure>`;
+}
+
 /* A flowering plant with its four major parts, SC.1.L.14.2 and SC.3.L.14.1. */
 function svgPlant(labels) {
   const w = 250, h = 220;
@@ -286,7 +309,7 @@ const G2 = [
   ]) },
   { id: 's2-severe', t: 'Getting ready for severe weather', b: 'SC.2.E.7.5', gen: () => fromPool([
     { q: 'You hear thunder outside. What is the safest thing to do?', a: 'Go indoors', w: ['Stand under a tall tree', 'Keep swimming', 'Stay in an open field'], why: 'Lightning is dangerous, and a building is the safest place during a storm.' },
-    { q: 'Why do Florida families make a hurricane plan before storm season?', a: 'So everyone knows what to do', w: ['To make the storm smaller', 'To stop the rain', 'To predict the future'], why: 'Preparing ahead means nobody has to work it out during an emergency.' },
+    { q: 'Why do Florida families make a hurricane plan before storm season?', a: 'So everyone knows what to do', w: ['To make the storm smaller', 'To stop the rain', 'To predict the future'], why: 'Preparing ahead means nobody has to work it out during an emergency.', vis: () => photo('hurricane') },
   ]) },
   { id: 's2-body', t: 'Parts of the human body', b: 'SC.2.L.14.1', gen: () => fromPool([
     { q: 'Which body part pumps blood around your body?', a: 'Heart', w: ['Brain', 'Lungs', 'Stomach'], why: 'The heart pumps blood to every part of the body.' },
@@ -296,8 +319,8 @@ const G2 = [
     { q: 'Which body part breaks down the food you eat?', a: 'Stomach', w: ['Lungs', 'Brain', 'Skeleton'], why: 'The stomach digests food so the body can use it.' },
   ]) },
   { id: 's2-lifecycle', t: 'Life cycles', b: 'SC.2.L.16.1', gen: () => fromPool([
-    { q: 'What comes right after the egg in a butterfly’s life cycle?', a: 'Caterpillar', w: ['Adult butterfly', 'Chrysalis', 'Seed'], why: 'A butterfly goes egg, caterpillar, chrysalis, then adult.',
-      vis: () => svgCycle([{ icon: '🥚', name: 'egg' }, { icon: '🐛', name: 'caterpillar' }, { icon: '🛡️', name: 'chrysalis' }, { icon: '🦋', name: 'butterfly' }]) },
+    { q: 'What comes right after the egg in a butterfly’s life cycle?', a: 'Caterpillar', w: ['Adult butterfly', 'Chrysalis', 'Seed'], why: 'A butterfly goes egg, caterpillar, chrysalis, then adult. This is a real swallowtail caterpillar.',
+      vis: () => photo('caterpillar') },
     { q: 'What is the last stage of a butterfly’s life cycle?', a: 'Adult butterfly', w: ['Egg', 'Caterpillar', 'Chrysalis'], why: 'The adult butterfly is the final stage, and it lays eggs to begin the cycle again.',
       vis: () => svgCycle([{ icon: '🥚', name: 'egg' }, { icon: '🐛', name: 'caterpillar' }, { icon: '🛡️', name: 'chrysalis' }, { icon: '🦋', name: 'butterfly' }]) },
     { q: 'What does a bean seed grow into first?', a: 'A seedling', w: ['A flower', 'A bean pod', 'Another seed'], why: 'A seed sprouts into a seedling, which grows into a plant that flowers and makes new seeds.',
@@ -412,7 +435,7 @@ const G3 = [
     { q: 'Are all stars the same size?', a: 'No, they vary a great deal', w: ['Yes, all identical', 'All are smaller than the Sun', 'All are the same as Earth'], why: 'Stars come in many sizes and brightnesses.' },
   ]) },
   { id: 's3-sunstar', t: 'The Sun is a star that emits energy', b: 'SC.3.E.5.2', gen: () => fromPool([
-    { q: 'What makes the Sun a star rather than a planet?', a: 'It gives off its own energy', w: ['It is very round', 'It is very large', 'It moves across the sky'], why: 'Stars emit their own energy. Planets do not; they only reflect light from a star.' },
+    { q: 'What makes the Sun a star rather than a planet?', a: 'It gives off its own energy', w: ['It is very round', 'It is very large', 'It moves across the sky'], why: 'Stars emit their own energy. Planets do not; they only reflect light from a star.', vis: () => photo('sun') },
     { q: 'How is the Sun different from the Moon?', a: 'The Sun makes its own light; the Moon reflects it', w: ['The Moon is hotter', 'The Moon is a star too', 'The Sun reflects light from the Moon'], why: 'The Sun emits light. The Moon only shines because sunlight bounces off it.' },
     { q: 'Sunlight reaches Earth across empty space. What is actually travelling to us?', a: 'Energy from the Sun', w: ['Air pushed from the Sun', 'Pieces of the Sun', 'Sound waves'], why: 'The Sun emits energy, some of it as light, and that energy crosses space to reach us.' },
   ]) },
@@ -427,7 +450,7 @@ const G3 = [
   ]) },
   { id: 's3-telescope', t: 'Telescopes show more stars', b: 'SC.3.E.5.5', gen: () => fromPool([
     { q: 'What happens when you look at the night sky through a telescope?', a: 'You see far more stars', w: ['You see fewer stars', 'You see the same number', 'The stars disappear'], why: 'A telescope gathers more light, so it reveals dramatically more stars than the unaided eye can see.' },
-    { q: 'Why can a telescope show stars your eyes cannot?', a: 'It collects much more light', w: ['It moves closer to them', 'It makes stars brighter', 'It creates new stars'], why: 'The wide lens or mirror gathers light your eye alone would miss.' },
+    { q: 'Why can a telescope show stars your eyes cannot?', a: 'It collects much more light', w: ['It moves closer to them', 'It makes stars brighter', 'It creates new stars'], why: 'The wide lens or mirror gathers light your eye alone would miss. Telescopes and spacecraft reveal detail like these lunar craters.', vis: () => photo('craters') },
   ]) },
   { id: 's3-radiant', t: 'The Sun heats objects', b: 'SC.3.E.6.1', gen: () => fromPool([
     { q: 'A metal slide sits in the Sun all morning. How does it feel at noon?', a: 'Hot', w: ['Cold', 'Frozen', 'Exactly the same as dawn'], why: 'Radiant energy from the Sun heats objects it shines on.' },
@@ -570,7 +593,7 @@ const G4 = [
   ]) },
   { id: 's4-moonphases', t: 'Phases of the Moon', b: 'SC.4.E.5.2', gen: () => fromPool([
     { q: 'About how long does it take the Moon to go through all its phases?', a: 'About a month', w: ['About a day', 'About a week', 'About a year'], why: 'The Moon cycles through its phases in roughly 29 and a half days.', vis: () => svgMoon('full') },
-    { q: 'Which phase shows a fully lit circle?', a: 'Full Moon', w: ['New Moon', 'First quarter', 'Crescent'], why: 'At full Moon the whole face we see is lit by the Sun.', vis: () => svgMoon('full') },
+    { q: 'Which phase shows a fully lit circle?', a: 'Full Moon', w: ['New Moon', 'First quarter', 'Crescent'], why: 'At full Moon the whole face we see is lit by the Sun. This is a real photograph of one, taken from Apollo 8.', vis: () => photo('moon') },
     { q: 'Which phase is it when we cannot see the Moon lit at all?', a: 'New Moon', w: ['Full Moon', 'Last quarter', 'Gibbous'], why: 'At new Moon the lit side faces away from Earth, so it looks dark.', vis: () => svgMoon('new') },
     { q: 'What is this phase, where exactly half the face is lit?', a: 'Quarter Moon', w: ['Full Moon', 'New Moon', 'Crescent'], why: 'A quarter Moon shows half the visible face lit, a quarter of the way through the cycle.', vis: () => svgMoon('first quarter') },
     { q: 'Why does the Moon appear to change shape?', a: 'We see different amounts of its lit half', w: ['The Moon really changes shape', 'Clouds cover parts', 'Earth’s shadow does it nightly'], why: 'Half the Moon is always lit. As it orbits, we see different amounts of that lit half.', vis: () => svgMoon('crescent') },
@@ -641,8 +664,8 @@ const G4 = [
     { q: 'A newly hatched sea turtle heads straight for the ocean with no parent present. What kind of behaviour is that?', a: 'Inherited', w: ['Learned', 'Taught by other turtles', 'Copied from birds'], why: 'It has had no chance to learn or be taught, so the behaviour must be inherited.' },
   ]) },
   { id: 's4-metamorphosis', t: 'Complete and incomplete metamorphosis', b: 'SC.4.L.16.4', gen: () => fromPool([
-    { q: 'A butterfly goes egg, larva, pupa, adult. What is that called?', a: 'Complete metamorphosis', w: ['Incomplete metamorphosis', 'No metamorphosis', 'Germination'], why: 'Complete metamorphosis has four very different stages, including a pupa.',
-      vis: () => svgCycle([{ icon: '🥚', name: 'egg' }, { icon: '🐛', name: 'larva' }, { icon: '🛡️', name: 'pupa' }, { icon: '🦋', name: 'adult' }]) },
+    { q: 'A butterfly goes egg, larva, pupa, adult. What is that called?', a: 'Complete metamorphosis', w: ['Incomplete metamorphosis', 'No metamorphosis', 'Germination'], why: 'Complete metamorphosis has four very different stages, including a pupa. The monarch shown here is the adult stage.',
+      vis: () => photo('butterfly') },
     { q: 'A grasshopper goes egg, nymph, adult, with the nymph looking like a small adult. What is that?', a: 'Incomplete metamorphosis', w: ['Complete metamorphosis', 'Pollination', 'Hibernation'], why: 'Incomplete metamorphosis has three stages and no pupa, and the young resemble the adult.',
       vis: () => svgCycle([{ icon: '🥚', name: 'egg' }, { icon: '🦗', name: 'nymph' }, { icon: '🦗', name: 'adult' }]) },
     { q: 'Which stage does complete metamorphosis have that incomplete does not?', a: 'Pupa', w: ['Egg', 'Adult', 'Nymph'], why: 'The pupa stage, where the body is completely rebuilt, only occurs in complete metamorphosis.' },
@@ -782,17 +805,17 @@ const G4 = [
 const G5 = [
   { id: 's5-galaxy', t: 'Galaxies', b: 'SC.5.E.5.1', gen: () => fromPool([
     { q: 'What is our home galaxy called?', a: 'The Milky Way', w: ['Andromeda', 'The Solar System', 'Orion'], why: 'Earth and the Sun sit inside the Milky Way galaxy.' },
-    { q: 'What is a galaxy made of?', a: 'Gas, dust and many stars', w: ['Only one star', 'Only planets', 'Only empty space'], why: 'A galaxy is a huge collection of gas, dust and stars, along with anything orbiting those stars.' },
+    { q: 'What is a galaxy made of?', a: 'Gas, dust and many stars', w: ['Only one star', 'Only planets', 'Only empty space'], why: 'A galaxy is a huge collection of gas, dust and stars, along with anything orbiting those stars.', vis: () => photo('galaxy') },
     { q: 'Which is larger, the Solar System or the Milky Way galaxy?', a: 'The Milky Way galaxy', w: ['The Solar System', 'They are the same', 'Neither has a size'], why: 'The Solar System is one star and its objects. The galaxy holds hundreds of billions of stars.' },
   ]) },
   { id: 's5-planets', t: 'Inner and outer planets', b: 'SC.5.E.5.2', gen: () => fromPool([
     { q: 'What are the inner planets mostly made of?', a: 'Rock and metal', w: ['Gas', 'Ice only', 'Liquid water'], why: 'Mercury, Venus, Earth and Mars are small, dense and rocky.' },
-    { q: 'What are the outer planets mostly made of?', a: 'Gas', w: ['Rock', 'Metal', 'Sand'], why: 'Jupiter, Saturn, Uranus and Neptune are large gas giants.' },
+    { q: 'What are the outer planets mostly made of?', a: 'Gas', w: ['Rock', 'Metal', 'Sand'], why: 'Jupiter, Saturn, Uranus and Neptune are large gas giants. Saturn, shown here, is one of them.', vis: () => photo('saturn') },
     { q: 'What do all planets have in common?', a: 'They orbit the Sun and are roughly round', w: ['They all have rings', 'They all have life', 'They are all the same size'], why: 'Every planet orbits the Sun, is shaped by its own gravity, and has cleared its orbital path.' },
     { q: 'Which is larger, an inner planet or an outer planet?', a: 'Outer planets are much larger', w: ['Inner planets are larger', 'They are identical', 'Size does not vary'], why: 'The gas giants are far larger than the rocky inner planets.' },
   ]) },
   { id: 's5-solarsystem', t: 'Objects in the Solar System', b: 'SC.5.E.5.3', gen: () => fromPool([
-    { q: 'What is Earth’s position from the Sun?', a: 'Third', w: ['First', 'Second', 'Fourth'], why: 'The order is Mercury, Venus, Earth, Mars, so Earth is third from the Sun.' },
+    { q: 'What is Earth’s position from the Sun?', a: 'Third', w: ['First', 'Second', 'Fourth'], why: 'The order is Mercury, Venus, Earth, Mars, so Earth is third from the Sun.', vis: () => photo('earth') },
     { q: 'What is an asteroid?', a: 'A rocky object orbiting the Sun', w: ['A star', 'A moon of Earth', 'A ball of gas'], why: 'Asteroids are rocky bodies, most of them in a belt between Mars and Jupiter.' },
     { q: 'Why does a comet grow a bright tail as it approaches the Sun?', a: 'Its ice heats up and streams away', w: ['It catches fire', 'It collides with planets', 'It starts spinning faster'], why: 'A comet is ice and dust. Near the Sun the ice turns to gas and trails behind it as a tail.' },
     { q: 'What is a moon?', a: 'An object that orbits a planet', w: ['An object that orbits the Sun directly', 'A small star', 'A type of comet'], why: 'Moons orbit planets, while planets orbit the Sun.' },
@@ -804,7 +827,7 @@ const G5 = [
     { q: 'In the water cycle, can water change state?', a: 'Yes, between solid, liquid and gas', w: ['No, it stays liquid', 'Only from solid to liquid', 'Only once'], why: 'Water moves back and forth between solid, liquid and gas throughout the cycle.', vis: () => svgWaterCycle('collection') },
   ]) },
   { id: 's5-ocean', t: 'The ocean and the water cycle', b: 'SC.5.E.7.2', gen: () => fromPool([
-    { q: 'Where does most evaporation on Earth happen?', a: 'From the ocean', w: ['From lakes', 'From rivers', 'From puddles'], why: 'The ocean holds most of Earth’s water, so it is the largest source of evaporation.' },
+    { q: 'Where does most evaporation on Earth happen?', a: 'From the ocean', w: ['From lakes', 'From rivers', 'From puddles'], why: 'The ocean holds most of Earth’s water, so it is the largest source of evaporation. From space you can see how much of Earth is ocean.', vis: () => photo('earth') },
     { q: 'How is the ocean connected to lakes and rivers?', a: 'Through the water cycle', w: ['They are not connected', 'Only by canals', 'Only by rain in one place'], why: 'Evaporation, condensation and precipitation link every water reservoir on Earth.' },
   ]) },
   { id: 's5-weatherfactors', t: 'What makes the weather', b: 'SC.5.E.7.3', gen: () => fromPool([

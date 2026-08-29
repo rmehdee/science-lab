@@ -59,3 +59,15 @@ Type: CNAME   Name: science   Target: rmehdee.github.io   Proxy: DNS only
 
 Proxy must stay DNS only. If Cloudflare proxies the record, GitHub cannot
 complete the certificate challenge and the subdomain serves no HTTPS.
+
+## Photographs
+
+`photos/` holds public-domain photographs, self-hosted and credited in the
+caption of every question that uses one. They are deliberately **not**
+hotlinked: loading them from NASA or Wikimedia would send a child's IP address
+to a third party, and these games promise no third-party requests.
+
+Sources are limited to genuinely public-domain material: NASA (space and Earth
+imagery) and the U.S. Fish and Wildlife Service. Wikimedia results were filtered
+by licence and anything CC BY-SA or GFDL was rejected. Each file is resized to a
+720px long edge and encoded as WebP; the whole set is under 400KB.
