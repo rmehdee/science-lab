@@ -47,3 +47,16 @@ are never transmitted. A parent reset on the start screen erases all of it.
 
 Open `preview.html` to see a live example of all 156 topics with their
 drawings, choices, explanations and help cards. Press "New examples" to reroll.
+
+## Custom domain
+
+`science.mehdee.com` is the intended home. It needs one DNS record in
+Cloudflare on the `mehdee.com` zone:
+
+```
+Type: CNAME   Name: science   Target: rmehdee.github.io   Proxy: DNS only
+```
+
+Once that resolves, rename `CNAME.pending` back to `CNAME`, push, and set the
+custom domain in the repo's Pages settings. Until then the game serves from
+https://rmehdee.github.io/science-lab/ .
