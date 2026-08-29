@@ -410,6 +410,12 @@
   $('quitBtn').addEventListener('click', openMenu);
   $('againBtn').addEventListener('click', () => startLevel(run.level.n));
   $('backBtn').addEventListener('click', openMenu);
+  // Tapping the game's name goes back to the skills list, or to the start
+  // screen if no grade has been picked yet.
+  $('homeBtn').addEventListener('click', () => {
+    if (me.grade) openMenu(); else show('screenStart');
+  });
+
   $('reportBtn').addEventListener('click', openReport);
   $('reportBackBtn').addEventListener('click', openMenu);
   $('downloadBtn').addEventListener('click', downloadReport);
