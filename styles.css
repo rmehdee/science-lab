@@ -32,11 +32,10 @@ html { -webkit-text-size-adjust: 100%; }
    fixed layers under the cards, so questions stay on plain white. */
 body {
   background:
-    radial-gradient(1100px 640px at 10% -10%, #BEF0E1 0%, transparent 62%),
-    radial-gradient(980px 600px at 94% 2%, #C7E3FF 0%, transparent 64%),
-    radial-gradient(900px 660px at 48% 110%, #DAF6D0 0%, transparent 62%),
-    radial-gradient(700px 520px at 88% 82%, #DFD9FF 0%, transparent 62%),
-    linear-gradient(180deg, #EAF5FF 0%, #ECFAF4 52%, #F3F0FF 100%);
+    radial-gradient(1200px 700px at 8% -12%, #EFFBF7 0%, transparent 60%),
+    radial-gradient(1050px 640px at 96% 0%, #F0F7FF 0%, transparent 62%),
+    radial-gradient(980px 700px at 50% 112%, #F4FCF1 0%, transparent 60%),
+    linear-gradient(180deg, #FAFDFF 0%, #FAFEFC 55%, #FBFAFF 100%);
   background-attachment: fixed;
   color: var(--ink);
   font-family: ui-rounded, "SF Pro Rounded", "Nunito", "Segoe UI", system-ui, sans-serif;
@@ -48,7 +47,7 @@ body::before {
   content: '';
   position: fixed; inset: -120px;
   z-index: -1; pointer-events: none;
-  opacity: .1;
+  opacity: .07;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150' viewBox='0 0 260 260'%3E%3Cg fill='none' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cellipse cx='52' cy='52' rx='31' ry='12' stroke='%235B8DEF' transform='rotate(35 52 52)'/%3E%3Cellipse cx='52' cy='52' rx='31' ry='12' stroke='%235B8DEF' transform='rotate(-35 52 52)'/%3E%3Ccircle cx='52' cy='52' r='6' fill='%235B8DEF' stroke='none'/%3E%3Cpath d='M176 24v20l-20 34h56l-20-34V24z' stroke='%2334C7A0'/%3E%3Cpath d='M170 22h24' stroke='%2334C7A0'/%3E%3Cpath d='M118 40q2 9 11 11q-9 2-11 11q-2-9-11-11q9-2 11-11z' fill='%23FFB020' stroke='none'/%3E%3Cpath d='M34 198q24-42 54-24-6 36-54 24z' stroke='%2312885A'/%3E%3Cpath d='M39 196q26-7 45-21' stroke='%2312885A'/%3E%3Cpath d='M196 140c13 17 19 25 19 33a19 19 0 0 1-38 0c0-8 6-16 19-33z' stroke='%2306B6D4'/%3E%3Cpath d='M112 112l26 15M140 127l23-12' stroke='%23A78BFA'/%3E%3Ccircle cx='110' cy='110' r='6' fill='%23A78BFA' stroke='none'/%3E%3Ccircle cx='142' cy='129' r='6' fill='%23A78BFA' stroke='none'/%3E%3Ccircle cx='165' cy='113' r='6' fill='%23A78BFA' stroke='none'/%3E%3Cpath d='M226 198q3 13 15 16q-12 3-15 16q-3-13-15-16q12-3 15-16z' fill='%23FFB020' stroke='none'/%3E%3C/g%3E%3C/svg%3E");
   animation: drift 200s linear infinite;
 }
@@ -412,28 +411,6 @@ footer a { color: var(--blue); }
 @media (max-width: 340px) {
   .gamename { font-size: .56rem; padding: 2px 5px; }
   #switchBtn { font-size: .64rem !important; }
-}
-
-/* ---------- keeping the reading area calm ----------
-   The decorated sky was pulling attention off the question. The pattern now
-   sits at a tenth opacity and drifts slowly, and a soft light band runs down
-   the middle of the page so the column a child actually reads sits on calm
-   ground while the decoration stays out at the edges. */
-body::after {
-  content: '';
-  position: fixed; inset: 0;
-  z-index: -1; pointer-events: none;
-  background: linear-gradient(90deg,
-    transparent 0%,
-    #FFFFFFB8 16%,
-    #FFFFFFDE 30%,
-    #FFFFFFDE 70%,
-    #FFFFFFB8 84%,
-    transparent 100%);
-}
-@media (max-width: 900px) {
-  /* On a phone the column is nearly the whole width, so wash the lot. */
-  body::after { background: #FFFFFFC4; }
 }
 
 /* Locked levels must be fully opaque: the pattern was showing through and
