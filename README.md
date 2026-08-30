@@ -29,9 +29,13 @@ Not affiliated with or endorsed by the Florida Department of Education.
 
 ## Privacy
 
-No accounts, no ads, no analytics, no third-party scripts. A first name and the
-level progress live in the browser's own local storage on that one device and
-are never transmitted. A parent reset on the start screen erases all of it.
+No accounts, no ads, no cookies, no advertising or profiling scripts. The child's
+name and progress live in `localStorage` on that device only and are never
+transmitted. The one server request is an anonymous page-view count through
+Cloudflare Web Analytics: cookieless, no fingerprinting, no cross-site tracking,
+and it identifies nobody. The game still works offline after the first load; the
+beacon simply fails silently.
+A parent reset on the start screen erases all saved progress.
 
 ## Files
 
@@ -65,7 +69,8 @@ complete the certificate challenge and the subdomain serves no HTTPS.
 `photos/` holds public-domain photographs, self-hosted and credited in the
 caption of every question that uses one. They are deliberately **not**
 hotlinked: loading them from NASA or Wikimedia would send a child's IP address
-to a third party, and these games promise no third-party requests.
+to a third party. The analytics beacon is the single deliberate exception,
+and it carries no information about the person loading the page.
 
 Sources are limited to genuinely public-domain material: NASA (space and Earth
 imagery) and the U.S. Fish and Wildlife Service. Wikimedia results were filtered
